@@ -1,13 +1,16 @@
 import sys, pygame
+from entity import Entity
+
+mainClock = pygame.time.Clock()
 pygame.init()
 
-size = width, height = 320, 240
+monitor = width, height = 720, 480
 speed = [2, 2]
 black = 0, 0, 0
 
-screen = pygame.display.set_mode(size)
+screen = pygame.display.set_mode(monitor, pygame.RESIZABLE)
 
-ball = pygame.image.load("ball.jpg")
+ball = pygame.image.load("main/game/intro_ball.gif")
 ballrect = ball.get_rect()
 
 while 1:
@@ -23,3 +26,6 @@ while 1:
     screen.fill(black)
     screen.blit(ball, ballrect)
     pygame.display.flip()
+    mainClock.tick(60)
+
+
