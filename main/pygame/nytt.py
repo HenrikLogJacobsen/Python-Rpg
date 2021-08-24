@@ -9,6 +9,7 @@ def main():
     SCREEN_WIDTH = 400
     SCREEN_HEIGHT = 600
     SPEED = 5 
+    SCORE = 0
 
 
     screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
