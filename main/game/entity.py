@@ -7,8 +7,9 @@ class Entity:
         self.img = pygame.image.load(self.path)
         self.rect = self.img.get_rect()
 
-    def say_something(self):
-        print("HELLO")
+    def center_coord(self, x, y):
+        self.pos = [x - (self.rect[2] / 2), y - (self.rect[2] / 2)]
+
 
         
 

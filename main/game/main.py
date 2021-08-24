@@ -10,8 +10,10 @@ speed = [0, 0]
 white = 255, 255, 255
 vel = 2
 running = True
-player = Entity([width / 2, height / 2], "intro_ball.gif")
+player = Entity([0, 0], "intro_ball.gif")
+player.center_coord(width / 2, height / 2)
 screen = pygame.display.set_mode(monitor, pygame.RESIZABLE)
+print(player.rect[2])
 
 pygame.display.set_caption("Pukman")
 
