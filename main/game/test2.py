@@ -1,42 +1,46 @@
+
 import pygame 
 import sys
-from buttons import Button
+import buttons
+import entity
 from pygame.constants import QUIT
 
 pygame.init()
+speed = [0,0]
+vel = 2
 
+LAUNCH_GAME = False
 SCREEN_HEIGHT = 500
 SCREEN_WIDHT = 800
 screen = pygame.display.set_mode((SCREEN_HEIGHT, SCREEN_WIDHT))
 screen.fill((202, 228, 241))
-start_img = pygame.image.load('/Users/jonasolsen/Documents/GitHub/start.png').convert_alpha()
-class cutton:
-    
-    def __init__(self, x, y, image):
-        
-        self.image = image
-        self.rect = self.image.get_rect() 
-        self.rect.topleft = (x, y)
+start_img = pygame.image.load('/Users/jonasolsen/Documents/GitHub/jonasLog/main/start.png').convert_alpha()
 
-    def draw(self):
-        screen.blit(self.image, (self.rect.x, self.rect.y))
+start_button = buttons.Button(100, 200, start_img, 0.7)
+player = entity.Entity([0, 0], "intro_ball.gif")
+player.center_coord(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2)
 
 
-start_button = cutton(100, 200, start_img)
+run = True
 
-
-
-running = True 
-while running:
+while run:
     
     screen.fill((202, 228, 241))
 
-
+    #draw_button = buttons.Button.draw(screen)
+    start_button.draw(screen)
+    
 
     for event in pygame.event.get():
         if event.type == QUIT:
-            running = False
+            run = False
             pygame.quit
+        
+    
+    
+    pygame.display.update()
+
+
         
 
        
