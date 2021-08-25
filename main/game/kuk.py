@@ -1,7 +1,7 @@
 import pygame 
 pygame.init() 
 screen = pygame.display.set_mode((1200,600)) 
-myfont = 'timesnewromanbold'
+myfont = pygame.font.SysFont(None, 30) 
 mytext = myfont.render('Hello world', 1, (255, 100, 100)) 
 running = True
 while running: 
