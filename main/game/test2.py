@@ -9,7 +9,7 @@ pygame.init()
 speed = [0,0]
 vel = 2
 
-LAUNCH_GAME = False
+
 SCREEN_HEIGHT = 500
 SCREEN_WIDHT = 800
 screen = pygame.display.set_mode((SCREEN_HEIGHT, SCREEN_WIDHT))
@@ -21,27 +21,36 @@ player = entity.Entity([0, 0], "intro_ball.gif")
 player.center_coord(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2)
 
 
-run = True
+run_start = True
 
-while run:
+LAUNCH_GAME = False
+
+while run_start:
+
     
     screen.fill((202, 228, 241))
 
     #draw_button = buttons.Button.draw(screen)
-    start_button.draw(screen)
+    if start_button.draw(screen) == True:
+        LAUNCH_GAME = True
+
+
+
+
+
     
 
     for event in pygame.event.get():
         if event.type == QUIT:
-            run = False
+            run_start = False
             pygame.quit
         
     
     
-    pygame.display.update()
 
 
-        
+
+
 
        
 

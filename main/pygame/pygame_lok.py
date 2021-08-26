@@ -14,8 +14,8 @@ def main():
     xpos = 50
     ypos = 50
 
-    step_x = 1
-    step_y = 1
+    step_x = 5
+    step_y = 5
 
     screen_width = 1000
     screen_height = 700
@@ -45,7 +45,7 @@ def main():
     pygame.display.flip()
     
     clock = pygame.time.Clock()
-    fps = 1
+    fps = 60
     pygame.key.set_repeat(500,30)
 
     running = True
