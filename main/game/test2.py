@@ -35,83 +35,76 @@ player.center_coord(SCREEN_WIDHT / 2, SCREEN_HEIGHT / 2)
 clock = pygame.time.Clock()
 fps = 60
 
-master = True
-
 run_menu = True
 settings_menu = False
 
 LAUNCH_GAME = False
 
-while master:
 
-    while run_menu:
+while run_menu:
 
-        
-        screen.fill((202, 228, 241))
+    
+    screen.fill((202, 228, 241))
 
-        #draw_button = buttons.Button.draw(screen)
-        if start_button.draw(screen) == True:
-            LAUNCH_GAME = True
-            run_menu = False
-        
+    #draw_button = buttons.Button.draw(screen)
+    if start_button.draw(screen) == True:
+        LAUNCH_GAME = True
+        run_menu = False
+    
 
-        if settings_button.draw(screen) == True:
-            settings_menu = True
-            run_menu = False
-
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                LAUNCH_GAME = False
-                master = False
-                pygame.quit
-            
-        pygame.display.update()
-
-
-    while settings_menu == True:
-        
-        screen.fill((101,101,101))
-
-        if back_button.draw(screen) == True:
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            LAUNCH_GAME = False
             run_menu = True
-            settings_menu = False
-
-            
-
-            
-        pygame.display.update()
-        clock.tick(fps)
-
-
-
-    while LAUNCH_GAME: 
-
-        screen.fill((202, 228, 241))
-
-
-        for event in pygame.event.get():
-
-            if event.type == QUIT:
-                master = False
-                pygame.quit
-                
-
-        keys = pygame.key.get_pressed()
+            pygame.quit
         
-        if keys[pygame.K_LEFT]:
-            screen_pos[0] += vel
-        if keys[pygame.K_RIGHT]:
-            screen_pos[0] -= vel
-        if keys[pygame.K_UP]:
-            screen_pos[1] += vel
-        if keys[pygame.K_DOWN]:
-            screen_pos[1] -= vel
+    pygame.display.update()
 
-        # DRAW
-        screen.blit(player.img, player.pos)
-        map1.draw(screen_pos)
-        pygame.display.update()
-        clock.tick(60)
+
+while settings_menu == True:
+    
+    screen.fill((101,101,101))
+
+    if back_button.draw(screen) == True:
+        run_menu = True
+        settings_menu = False
+
+        
+
+        
+    pygame.display.update()
+    clock.tick(fps)
+
+
+
+while LAUNCH_GAME: 
+
+    screen.fill((202, 228, 241))
+
+
+    for event in pygame.event.get():
+
+        if event.type == QUIT:
+            master = False
+            pygame.quit
+            
+
+    keys = pygame.key.get_pressed()
+    
+    if keys[pygame.K_LEFT]:
+        screen_pos[0] += vel
+    if keys[pygame.K_RIGHT]:
+        screen_pos[0] -= vel
+    if keys[pygame.K_UP]:
+        screen_pos[1] += vel
+    if keys[pygame.K_DOWN]:
+        screen_pos[1] -= vel
+
+    # DRAW
+    screen.blit(player.img, player.pos)
+    map1.draw(screen_pos)
+    pygame.display.update()
+    clock.tick(60)
 
 
 
