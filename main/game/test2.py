@@ -61,6 +61,7 @@ while master:
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                LAUNCH_GAME = False
                 master = False
                 pygame.quit
             
