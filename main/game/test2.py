@@ -46,34 +46,18 @@ while run_menu:
     
     screen.fill((202, 228, 241))
 
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            run_menu = False
+            pygame.quit
+
     #draw_button = buttons.Button.draw(screen)
     if start_button.draw(screen) == True:
         LAUNCH_GAME = True
         run_menu = False
     
-
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            LAUNCH_GAME = False
-            run_menu = True
-            pygame.quit
         
     pygame.display.update()
-
-
-while settings_menu == True:
-    
-    screen.fill((101,101,101))
-
-    if back_button.draw(screen) == True:
-        run_menu = True
-        settings_menu = False
-
-        
-
-        
-    pygame.display.update()
-    clock.tick(fps)
 
 
 
@@ -85,7 +69,7 @@ while LAUNCH_GAME:
     for event in pygame.event.get():
 
         if event.type == QUIT:
-            master = False
+            LAUNCH_GAME = False
             pygame.quit
             
 
