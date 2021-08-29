@@ -3,13 +3,14 @@ from pygame.constants import KMOD_NONE, TIMER_RESOLUTION
 from entity import Entity
 from map import Map
 from spritesheet import Spritesheet
+from player import Player
 import math
 
 
 
 # Class? + update monitor on resize
 monitor = width, height = 720, 480
-screen_pos = [0, 0]
+screen_pos = [width / 2, height / 2]
 white = 255, 255, 255
 vel = 1.5
 running = True
@@ -38,6 +39,8 @@ player_attack = [pygame.image.load('main/game/media/attack1.png').convert_alpha(
 #Entities (trenger lettere måte for når vi får mange)
 player = Entity([0, 0], "intro_ball.gif", 1)
 player.center_coord(width / 2, height / 2)
+p1 = Player(screen_pos)
+
 
 
 tree_pos = [[-200, 200], [600, 200], [-100, -100], [200, -100]]
@@ -76,7 +79,7 @@ while running:
         if event.type == pygame.QUIT: sys.exit()
 
     keys = pygame.key.get_pressed()
-    
+    print(screen_pos)
     if keys[pygame.K_LEFT]:
         screen_pos[0] += vel
         RIGHT = False
