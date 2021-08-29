@@ -2,6 +2,8 @@ import sys, pygame
 from pygame.constants import KMOD_NONE, TIMER_RESOLUTION
 from entity import Entity
 from map import Map
+from spritesheet import Spritesheet
+
 
 
 # Class? + update monitor on resize
@@ -20,7 +22,9 @@ screen = pygame.display.set_mode(monitor, pygame.RESIZABLE)
 pygame.display.set_caption("Pukman")
 
 #char sprites
-sheet = pygame.image.load('main/game/media/char_anim.png.tps').convert_alpha()
+char_anim = Spritesheet('main/game/media/char_anim.png')
+#running_anim = 
+
 player_right_walk = [pygame.image.load('main/game/media/run1.png').convert_alpha(), pygame.image.load('main/game/media/run2.png'), pygame.image.load('main/game/media/run3.png'), pygame.image.load('main/game/media/run4.png'), pygame.image.load('main/game/media/run5.png'), pygame.image.load('main/game/media/run6.png').convert_alpha()]
 player_left_walk = []
 player_idle = [pygame.image.load('main/game/media/idle1.png').convert_alpha(), pygame.image.load('main/game/media/idle2.png').convert_alpha(), pygame.image.load('main/game/media/idle3.png').convert_alpha(), pygame.image.load('main/game/media/idle4.png').convert_alpha()]
@@ -47,7 +51,7 @@ def redrawGameWindow():
 
 
     if LEFT:
-        screen.blit(player_left_walk[clock_count],(player.pos))
+        screen.blit(char_anim.get_sprite(1, 313, 50, 37),(player.pos))
 
     if RIGHT:
         screen.blit(player_right_walk[clock_count],(player.pos))
