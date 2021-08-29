@@ -24,15 +24,13 @@ pygame.display.set_caption("Pukman")
 
 #char sprites
 char_anim_sprite = Spritesheet('main/game/media/char_anim.png')
-#running_anim = 
+player_running_anim = [char_anim_sprite.parse_sprite("adventurer-run-00.png"), char_anim_sprite.parse_sprite("adventurer-run-01.png"), char_anim_sprite.parse_sprite("adventurer-run-02.png"), char_anim_sprite.parse_sprite("adventurer-run-03.png"), char_anim_sprite.parse_sprite("adventurer-run-04.png"), char_anim_sprite.parse_sprite("adventurer-run-05.png")]
+player_idle = [char_anim_sprite.parse_sprite("adventurer-idle-2-00.png"), char_anim_sprite.parse_sprite("adventurer-idle-2-01.png"), char_anim_sprite.parse_sprite("adventurer-idle-2-02.png"), char_anim_sprite.parse_sprite("adventurer-idle-2-03.png"), char_anim_sprite.parse_sprite("adventurer-idle-2-02.png"), char_anim_sprite.parse_sprite("adventurer-idle-2-01.png")]
+player_attack = [char_anim_sprite.parse_sprite("adventurer-attack2-00.png"), char_anim_sprite.parse_sprite("adventurer-attack2-01.png"), char_anim_sprite.parse_sprite("adventurer-attack2-02.png"), char_anim_sprite.parse_sprite("adventurer-attack2-03.png"), char_anim_sprite.parse_sprite("adventurer-attack2-04.png"), char_anim_sprite.parse_sprite("adventurer-attack2-05.png"), ]
 
-player_right_walk = [pygame.image.load('main/game/media/run1.png').convert_alpha(), pygame.image.load('main/game/media/run2.png'), pygame.image.load('main/game/media/run3.png'), pygame.image.load('main/game/media/run4.png'), pygame.image.load('main/game/media/run5.png'), pygame.image.load('main/game/media/run6.png').convert_alpha()]
-player_left_walk = []
-player_idle = [pygame.image.load('main/game/media/idle1.png').convert_alpha(), pygame.image.load('main/game/media/idle2.png').convert_alpha(), pygame.image.load('main/game/media/idle3.png').convert_alpha(), pygame.image.load('main/game/media/idle4.png').convert_alpha()]
-for i in range(0, len(player_right_walk)):
-    player_left_walk.append(pygame.transform.flip(player_right_walk[i], True, False))
-
-player_attack = [pygame.image.load('main/game/media/attack1.png').convert_alpha(), pygame.image.load('main/game/media/attack2.png').convert_alpha(), pygame.image.load('main/game/media/attack3.png').convert_alpha(), pygame.image.load('main/game/media/attack4.png').convert_alpha(), pygame.image.load('main/game/media/attack5.png').convert_alpha()]
+#sprite groups 
+all_sprites = pygame.sprite.Group()
+all_sprites.add(player_running_anim)
 
 
 #Entities (trenger lettere måte for når vi får mange)
@@ -43,28 +41,31 @@ player.center_coord(width / 2, height / 2)
 tree_pos = [[-200, 200], [300, 200], [-100, -100], [200, -100]]
 map1 = Map("tree.jpg", tree_pos, screen)
 
-def redrawGameWindow():
+def redrawGameWindow(index):
 
     screen.fill('white')
     map1.draw(screen_pos)
 
-    player_hitbox = player_left_walk[1].get_rect()
+
 
 
     if LEFT:
-        screen.blit(char_anim.get_sprite(1, 313, 50, 37),(player.pos))
+        screen.blit(pygame.transform.flip(player_running_anim[math.floor(index)], True, False),(player.pos))
 
     if RIGHT:
-        screen.blit(player_right_walk[math.floor(clock_count)],(player.pos))
+        screen.blit(player_running_anim[math.floor(index)],(player.pos))
     
     if MOVING == False: 
-        screen.blit(player_idle[math.floor(idle_count)],(player.pos))
+        screen.blit(player_idle[math.floor(index)],(player.pos))
 
     if ATTACK: 
-        screen.blit(player_attack[attack_count], player.pos)
+        if LEFT == True:
+            screen.blit(pygame.transform.flip(player_attack[math.floor(index)], True, False), (player.pos))
+        else:
+            screen.blit(player_attack[math.floor(index)], player.pos)
 
 
-
+index = 0
 ATTACK = False
 MOVING = False
 RIGHT = False
@@ -82,12 +83,14 @@ while running:
         RIGHT = False
         LEFT = True
         MOVING = True
+        index = (index + 0.1) % len(player_running_anim)
 
     if keys[pygame.K_RIGHT]:
         screen_pos[0] -= vel
         RIGHT = True
         LEFT = False
         MOVING = True
+        index = (index + 0.1) % len(player_running_anim)
 
     if keys[pygame.K_UP]:
         screen_pos[1] += vel
@@ -96,30 +99,20 @@ while running:
     
     if keys[pygame.K_SPACE]:
         ATTACK = True
-        RIGHT = False
-        LEFT = False
-        MOVING = False
+
 
     
 
 
 
     # DRAW
-    mainClock.tick(60)
-    clock_count += 0.1
-    idle_count += 0.1
-    attack_count += 1 
-    redrawGameWindow()
-    pygame.display.flip()
-
-    if clock_count >= 5:
-        clock_count = 0
-
-    if idle_count >= 3:
-        idle_count = 0 
+    index = index+0.1 % len(player_idle)
+    if index >= 6:
+        index = 0
     
-    if attack_count == 4:
-        attack_count = 0
+    mainClock.tick(60)
+    redrawGameWindow(index)
+    pygame.display.flip()
 
     MOVING = False
     RIGHT = False
