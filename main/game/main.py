@@ -20,6 +20,7 @@ screen = pygame.display.set_mode(monitor, pygame.RESIZABLE)
 pygame.display.set_caption("Pukman")
 
 #char sprites
+sheet = pygame.image.load('main/game/media/char_anim.png.tps').convert_alpha()
 player_right_walk = [pygame.image.load('main/game/media/run1.png').convert_alpha(), pygame.image.load('main/game/media/run2.png'), pygame.image.load('main/game/media/run3.png'), pygame.image.load('main/game/media/run4.png'), pygame.image.load('main/game/media/run5.png'), pygame.image.load('main/game/media/run6.png').convert_alpha()]
 player_left_walk = []
 player_idle = [pygame.image.load('main/game/media/idle1.png').convert_alpha(), pygame.image.load('main/game/media/idle2.png').convert_alpha(), pygame.image.load('main/game/media/idle3.png').convert_alpha(), pygame.image.load('main/game/media/idle4.png').convert_alpha()]
