@@ -1,14 +1,19 @@
 from entity import Entity
+import pygame 
 
 class Map:
     def __init__(self, url, positions, screen):
         self.url = url
+        self.path = 'main/game/media' + url
         self.positions = positions
         self.screen = screen
         self.entities = []
+        
+     
 
         for pos in self.positions:
             self.entities.append(Entity(pos, self.url))
+        
 
     def draw(self, screen_pos):
         for e in self.entities:
