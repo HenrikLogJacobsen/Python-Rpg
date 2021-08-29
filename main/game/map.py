@@ -12,7 +12,7 @@ class Map:
      
 
         for pos in self.positions:
-            self.entities.append(Entity(pos, self.url))
+            self.entities.append(Entity(pos, self.url, .2))
         
 
     def draw(self, screen_pos):

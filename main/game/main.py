@@ -11,7 +11,7 @@ import math
 monitor = width, height = 720, 480
 screen_pos = [0, 0]
 white = 255, 255, 255
-vel = 2
+vel = 1.5
 running = True
 
 mainClock = pygame.time.Clock()
@@ -36,11 +36,11 @@ player_attack = [pygame.image.load('main/game/media/attack1.png').convert_alpha(
 
 
 #Entities (trenger lettere måte for når vi får mange)
-player = Entity([0, 0], "intro_ball.gif")
+player = Entity([0, 0], "intro_ball.gif", 1)
 player.center_coord(width / 2, height / 2)
 
 
-tree_pos = [[-200, 200], [300, 200], [-100, -100], [200, -100]]
+tree_pos = [[-200, 200], [600, 200], [-100, -100], [200, -100]]
 map1 = Map("tree.jpg", tree_pos, screen)
 
 def redrawGameWindow():
