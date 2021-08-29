@@ -78,31 +78,30 @@ while running:
         if event.type == pygame.QUIT: sys.exit()
 
     keys = pygame.key.get_pressed()
-    if keys == True:
-        action = True
+
+
+
+    if keys[pygame.K_LEFT]:
+        screen_pos[0] += vel
+        RIGHT = False
+        LEFT = True
+        MOVING = True
+        index = (index + 0.1) % len(player_running_anim)
+
+    if keys[pygame.K_RIGHT]:
+        screen_pos[0] -= vel
+        RIGHT = True
+        LEFT = False
+        MOVING = True
+        index = (index + 0.1) % len(player_running_anim)
+
+    if keys[pygame.K_UP]:
+        screen_pos[1] += vel
+    if keys[pygame.K_DOWN]:
+        screen_pos[1] -= vel
     
-    if action == True:
-        if keys[pygame.K_LEFT]:
-            screen_pos[0] += vel
-            RIGHT = False
-            LEFT = True
-            MOVING = True
-            index = (index + 0.1) % len(player_running_anim)
-
-        if keys[pygame.K_RIGHT]:
-            screen_pos[0] -= vel
-            RIGHT = True
-            LEFT = False
-            MOVING = True
-            index = (index + 0.1) % len(player_running_anim)
-
-        if keys[pygame.K_UP]:
-            screen_pos[1] += vel
-        if keys[pygame.K_DOWN]:
-            screen_pos[1] -= vel
-        
-        if keys[pygame.K_SPACE]:
-            ATTACK = True
+    if keys[pygame.K_SPACE]:
+        ATTACK = True
 
 
     
@@ -119,8 +118,10 @@ while running:
     pygame.display.flip()
 
     action = False
-
-
+    LEFT = False
+    RIGHT = False
+    ATTACK = False
+    MOVING  = False
         
 
 

@@ -20,13 +20,13 @@ class Player():
 
 
 
-        if action == True:
+        #if action == True:
 
-            if keys = [K_LEFT]:
+            #if keys = [K_LEFT]:
 
-                if keys[pygame.K_LEFT]:
-                    screen_pos[0] += vel
-                    screen.blit(pygame.transform.flip(player_running_anim[math.floor(index)], True, False),(player.pos))
+                #if keys[pygame.K_LEFT]:
+                    #screen_pos[0] += vel
+                    #screen.blit(pygame.transform.flip(player_running_anim[math.floor(index)], True, False),(player.pos))
 
-                    index = (index + 0.1) % len(player_running_anim)
+                    #index = (index + 0.1) % len(player_running_anim)
 
