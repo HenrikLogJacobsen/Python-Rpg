@@ -38,8 +38,7 @@ all_sprites = pygame.sprite.Group()
 player = Entity([0, 0], "intro_ball.gif", 1)
 player.center_coord(width / 2, height / 2)
 p1 = Player(screen_pos)
-
-
+print(p1.pos)
 
 tree_pos = [[-200, 200], [600, 200], [-100, -100], [200, -100]]
 map1 = Map("tree.jpg", tree_pos, screen)
@@ -78,7 +77,6 @@ while running:
         if event.type == pygame.QUIT: sys.exit()
 
     keys = pygame.key.get_pressed()
-    print(screen_pos)
     if keys[pygame.K_LEFT]:
         screen_pos[0] += vel
         RIGHT = False
