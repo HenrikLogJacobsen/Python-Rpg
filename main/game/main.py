@@ -31,7 +31,7 @@ player_attack = [char_anim_sprite.parse_sprite("adventurer-attack2-00.png"), cha
 
 #sprite groups 
 all_sprites = pygame.sprite.Group()
-all_sprites.add(player_running_anim)
+#all_sprites.add(player_running_anim)
 
 
 #Entities (trenger lettere måte for når vi får mange)
@@ -44,13 +44,11 @@ p1 = Player(screen_pos)
 tree_pos = [[-200, 200], [600, 200], [-100, -100], [200, -100]]
 map1 = Map("tree.jpg", tree_pos, screen)
 
+
 def redrawGameWindow(index):
 
     screen.fill('white')
     map1.draw(screen_pos)
-
-
-
 
     if LEFT:
         screen.blit(pygame.transform.flip(player_running_anim[math.floor(index)], True, False),(player.pos))
@@ -117,10 +115,10 @@ while running:
     redrawGameWindow(index)
     pygame.display.flip()
 
-    MOVING = False
-    RIGHT = False
-    LEFT = False
-    ATTACK = False
+    #MOVING = False
+    #RIGHT = False
+    #LEFT = False
+    #ATTACK = False
 
         
 
