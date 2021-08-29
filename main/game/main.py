@@ -64,7 +64,7 @@ def redrawGameWindow(index):
         else:
             screen.blit(player_attack[math.floor(index)], player.pos)
 
-
+action = False
 index = 0
 ATTACK = False
 MOVING = False
@@ -77,6 +77,12 @@ while running:
         if event.type == pygame.QUIT: sys.exit()
 
     keys = pygame.key.get_pressed()
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 93995a0b440a63d15d06256ecfdbcb769d303b3f
     if keys[pygame.K_LEFT]:
         screen_pos[0] += vel
         RIGHT = False
@@ -113,11 +119,11 @@ while running:
     redrawGameWindow(index)
     pygame.display.flip()
 
-    #MOVING = False
-    #RIGHT = False
-    #LEFT = False
-    #ATTACK = False
-
+    action = False
+    LEFT = False
+    RIGHT = False
+    ATTACK = False
+    MOVING  = False
         
 
 
