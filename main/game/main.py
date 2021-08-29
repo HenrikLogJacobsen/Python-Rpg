@@ -3,6 +3,7 @@ from pygame.constants import KMOD_NONE, TIMER_RESOLUTION
 from entity import Entity
 from map import Map
 from spritesheet import Spritesheet
+import math
 
 
 
@@ -22,7 +23,7 @@ screen = pygame.display.set_mode(monitor, pygame.RESIZABLE)
 pygame.display.set_caption("Pukman")
 
 #char sprites
-char_anim = Spritesheet('main/game/media/char_anim.png')
+char_anim_sprite = Spritesheet('main/game/media/char_anim.png')
 #running_anim = 
 
 player_right_walk = [pygame.image.load('main/game/media/run1.png').convert_alpha(), pygame.image.load('main/game/media/run2.png'), pygame.image.load('main/game/media/run3.png'), pygame.image.load('main/game/media/run4.png'), pygame.image.load('main/game/media/run5.png'), pygame.image.load('main/game/media/run6.png').convert_alpha()]
@@ -54,10 +55,10 @@ def redrawGameWindow():
         screen.blit(char_anim.get_sprite(1, 313, 50, 37),(player.pos))
 
     if RIGHT:
-        screen.blit(player_right_walk[clock_count],(player.pos))
+        screen.blit(player_right_walk[math.floor(clock_count)],(player.pos))
     
     if MOVING == False: 
-        screen.blit(player_idle[idle_count],(player.pos))
+        screen.blit(player_idle[math.floor(idle_count)],(player.pos))
 
     if ATTACK: 
         screen.blit(player_attack[attack_count], player.pos)
@@ -104,17 +105,17 @@ while running:
 
 
     # DRAW
-    mainClock.tick(12)
-    clock_count += 1
-    idle_count += 1
+    mainClock.tick(60)
+    clock_count += 0.1
+    idle_count += 0.1
     attack_count += 1 
     redrawGameWindow()
     pygame.display.flip()
 
-    if clock_count == 5:
+    if clock_count >= 5:
         clock_count = 0
 
-    if idle_count == 3:
+    if idle_count >= 3:
         idle_count = 0 
     
     if attack_count == 4:
