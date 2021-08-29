@@ -77,12 +77,7 @@ while running:
         if event.type == pygame.QUIT: sys.exit()
 
     keys = pygame.key.get_pressed()
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 93995a0b440a63d15d06256ecfdbcb769d303b3f
+    
     if keys[pygame.K_LEFT]:
         screen_pos[0] += vel
         RIGHT = False
