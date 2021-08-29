@@ -94,14 +94,12 @@ while running:
 
     if keys[pygame.K_UP]:
         screen_pos[1] += vel
+
     if keys[pygame.K_DOWN]:
         screen_pos[1] -= vel
     
     if keys[pygame.K_SPACE]:
         ATTACK = True
-
-
-    
 
 
 
