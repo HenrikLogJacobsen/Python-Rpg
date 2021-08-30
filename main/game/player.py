@@ -3,7 +3,7 @@ from spritesheet import Spritesheet
 import math
 
 class Player():
-    def __init__(self, start_pos):
+    def __init__(self, center):
 
         self.action = "idle"
         self.index = 0
@@ -18,14 +18,15 @@ class Player():
 
         self.rect = self.char_anim_sprite.parse_sprite("adventurer-idle-2-00.png").get_rect()
         self.hitbox = (self.rect[2], self.rect[3])
+        self.start_pos = [center[0] - (self.hitbox[0] / 2), center[1] - (self.hitbox[1] / 2)]
+        self.pos = [center[0] - (self.hitbox[0] / 2), center[1] - (self.hitbox[1] / 2)]
         
-        self.start_pos = [start_pos[0] - (self.hitbox[0] / 2), start_pos[1] - (self.hitbox[1] / 2)]
-        self.pos = self.start_pos
         #sprite groups 
         all_sprites = pygame.sprite.Group()
         #all_sprites.add(self.player_running_anim)
 
     def draw(self, screen):
+        print(self.start_pos)
         if self.action == "left":
             screen.blit(pygame.transform.flip(self.player_running_anim[math.floor(self.index)], True, False),(self.start_pos))
 
