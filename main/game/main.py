@@ -27,6 +27,7 @@ enemy = Scellyenny((200,200), 'kuk2.png', 1, 0.5)
 
 tree_pos = [[-200, 200], [600, 200], [-100, -100], [200, -100]]
 map1 = Map("tree.jpg", tree_pos, screen)
+print('henrik kan sje kode')
 
 
 def redrawGameWindow():
