@@ -3,6 +3,7 @@ from map import Map
 from player import Player
 import math
 from ingameGui import text_box
+from scellyenny import Scellyenny
 
 
 
@@ -21,6 +22,8 @@ pygame.display.set_caption("Pukman")
 #Entities (trenger lettere måte for når vi får mange)
 player = Player(screen_pos)
 
+enemy = Scellyenny((200,200), 'main/game/kuk2.png', 1, screen)
+
 tree_pos = [[-200, 200], [600, 200], [-100, -100], [200, -100]]
 map1 = Map("tree.jpg", tree_pos, screen)
 
@@ -29,6 +32,7 @@ def redrawGameWindow():
 
     screen.fill('white')
     player.draw(screen)
+
     map1.draw(player.pos)
     
 
