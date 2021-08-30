@@ -19,5 +19,6 @@ class Map:
         for e in self.entities:
             e.pos[0] = e.start_pos[0] + screen_pos[0]
             e.pos[1] = e.start_pos[1] + screen_pos[1]
-            e.draw()
-            
+            self.screen.blit(e.img,e.pos)
+
+

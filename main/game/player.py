@@ -26,7 +26,7 @@ class Player():
         #all_sprites.add(self.player_running_anim)
 
     def draw(self, screen):
-        print(self.start_pos)
+        
         if self.action == "left":
             screen.blit(pygame.transform.flip(self.player_running_anim[math.floor(self.index)], True, False),(self.start_pos))
 

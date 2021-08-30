@@ -1,8 +1,8 @@
 import pygame
 
 class Entity:
-    def __init__(self, start_pos, path, scale, screen):
-        self.screen = screen
+    def __init__(self, start_pos, path, scale):
+        
         self.start_pos = start_pos
         self.pos = [0,0]
         self.path = "main/game/media/" + path
@@ -13,8 +13,7 @@ class Entity:
     def center_coord(self, x, y):
         self.pos = [x - (self.rect[2] / 2), y - (self.rect[2] / 2)]
 
-    def draw(self):
-        self.screen.blit(self.img, self.pos)
+
         
 
 
