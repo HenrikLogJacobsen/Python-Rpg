@@ -1,10 +1,8 @@
 import sys, pygame
-from pygame.constants import KMOD_NONE, TIMER_RESOLUTION
-from entity import Entity
 from map import Map
-from spritesheet import Spritesheet
 from player import Player
 import math
+from ingameGui import text_box
 
 
 
@@ -12,13 +10,10 @@ import math
 monitor = width, height = 720, 480
 screen_pos = [width / 2, height / 2]
 white = 255, 255, 255
-vel = 1.5
+vel = 2
 running = True
 
 mainClock = pygame.time.Clock()
-clock_count = 0 
-idle_count = 0
-attack_count = 0
 pygame.init()
 screen = pygame.display.set_mode(monitor, pygame.RESIZABLE)
 pygame.display.set_caption("Pukman")
@@ -38,41 +33,20 @@ all_sprites = pygame.sprite.Group()
 
 
 #Entities (trenger lettere måte for når vi får mange)
-player = Entity([0, 0], "intro_ball.gif", 1)
-player.center_coord(width / 2, height / 2)
-p1 = Player(screen_pos)
-print(p1.pos)
+player = Player(screen_pos)
+print(player.pos)
 
 tree_pos = [[-200, 200], [600, 200], [-100, -100], [200, -100]]
 map1 = Map("tree.jpg", tree_pos, screen)
 
 
-def redrawGameWindow(index):
+def redrawGameWindow():
 
     screen.fill('white')
-    map1.draw(screen_pos)
-
-    if LEFT:
-        screen.blit(pygame.transform.flip(player_running_anim[math.floor(index)], True, False),(player.pos))
-
-    if RIGHT:
-        screen.blit(player_running_anim[math.floor(index)],(player.pos))
+    player.draw(screen)
+    map1.draw(player.pos)
+    screen.blit(totalText[0], totalText[1])
     
-    if MOVING == False: 
-        screen.blit(player_idle[math.floor(index)],(player.pos))
-
-    if ATTACK: 
-        if LEFT == True:
-            screen.blit(pygame.transform.flip(player_attack[math.floor(index)], True, False), (player.pos))
-        else:
-            screen.blit(player_attack[math.floor(index)], player.pos)
-
-action = False
-index = 0
-ATTACK = False
-MOVING = False
-RIGHT = False
-LEFT = False
 
 #GAMELOOP
 while running:
@@ -82,44 +56,30 @@ while running:
     keys = pygame.key.get_pressed()
     
     if keys[pygame.K_LEFT]:
-        screen_pos[0] += vel
-        RIGHT = False
-        LEFT = True
-        MOVING = True
-        index = (index + 0.1) % len(player_running_anim)
+        player.pos[0] += vel
+        player.action = "left"
 
     if keys[pygame.K_RIGHT]:
-        screen_pos[0] -= vel
-        RIGHT = True
-        LEFT = False
-        MOVING = True
-        index = (index + 0.1) % len(player_running_anim)
+        player.pos[0] -= vel
+        player.action = "right"
 
     if keys[pygame.K_UP]:
-        screen_pos[1] += vel
+        player.pos[1] += vel
+        player.action = "idle"
 
     if keys[pygame.K_DOWN]:
-        screen_pos[1] -= vel
+        player.pos[1] -= vel
+        player.action = "idle"
     
-    if keys[pygame.K_SPACE]:
-        ATTACK = True
+    # ----- Må oppdateres -----
+    #if keys[pygame.K_SPACE]:
+    #    player.action = "attacking"
 
-
-
-    # DRAW
-    index = index+0.1 % len(player_idle)
-    if index >= 6:
-        index = 0
     
     mainClock.tick(60)
-    redrawGameWindow(index)
+    redrawGameWindow()
+    player.update()
     pygame.display.flip()
-
-    action = False
-    LEFT = False
-    RIGHT = False
-    ATTACK = False
-    MOVING  = False
         
 
 
