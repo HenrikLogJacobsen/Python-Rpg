@@ -1,6 +1,6 @@
 {
     "tree": {
-        "path": "",
+        "path": "tree.jpg",
         "scale": 0.2,
         "entities": [
             [100, 100],
@@ -10,7 +10,7 @@
     },
     "enemy": {
         "skeleton": {
-            "path": "",
+            "path": "kuk2.png",
             "scale": 1,
             "speed": 2,
             "entities": [
