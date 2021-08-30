@@ -5,7 +5,7 @@ import math
 from ingameGui import text_box
 from scellyenny import Scellyenny
 
-
+#Ginger
 
 # Class? + update monitor on resize
 monitor = width, height = 720, 480
