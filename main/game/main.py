@@ -6,7 +6,7 @@ from ingameGui import text_box
 from scellyenny import Scellyenny
 
 print('henrik kan sje kode')
-
+print("heehee")
 
 
 # Class? + update monitor on resize
