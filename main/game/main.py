@@ -8,6 +8,9 @@ from scellyenny import Scellyenny
 print('henrik kan sje kode')
 print("heehee")
 
+print('tissefant')
+
+
 
 # Class? + update monitor on resize
 monitor = width, height = 720, 480
