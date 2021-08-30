@@ -1,5 +1,11 @@
 import pygame
 
+class EntityInfo:
+    def __init__(self):
+        
+        pass
+        
+
 class Entity:
     def __init__(self, start_pos, path, scale):
         
