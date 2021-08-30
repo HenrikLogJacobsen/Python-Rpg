@@ -5,9 +5,11 @@ import math
 from ingameGui import text_box
 from scellyenny import Scellyenny
 
+print('henrik kan sje kode')
 
 
-# Class? + update monitor on resize
+
+# Class? + update monitor on rsize
 monitor = width, height = 720, 480
 screen_pos = [width / 2, height / 2]
 white = 255, 255, 255
