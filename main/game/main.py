@@ -18,12 +18,6 @@ pygame.init()
 screen = pygame.display.set_mode(monitor, pygame.RESIZABLE)
 pygame.display.set_caption("Pukman")
 
-
-#sprite groups 
-all_sprites = pygame.sprite.Group()
-#all_sprites.add(player_running_anim)
-
-
 #Entities (trenger lettere måte for når vi får mange)
 player = Player(screen_pos)
 
