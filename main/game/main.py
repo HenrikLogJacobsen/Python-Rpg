@@ -5,7 +5,9 @@ import math
 from ingameGui import text_box
 from scellyenny import Scellyenny
 
-#Ginger
+print('henrik kan sje kode')
+
+
 
 # Class? + update monitor on resize
 monitor = width, height = 720, 480
