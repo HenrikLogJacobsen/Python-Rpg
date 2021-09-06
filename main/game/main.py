@@ -27,7 +27,8 @@ pygame.display.set_caption("Pukman")
 #Entities (trenger lettere måte for når vi får mange)
 player = Player(screen_pos)
 
-enemy = Scellyenny((200,200), 'kuk2.png', 1, 0.5)
+enemy = Scellyenny((200,200), 'kuk2.png', 1, 0)
+
 
 
 tree_pos = [[-200, 200], [600, 200], [-100, -100], [200, -100]]
@@ -39,6 +40,7 @@ def redrawGameWindow():
     screen.blit(enemy.img, enemy.pos)
     player.draw(screen)
     map1.draw(player.pos)
+
     
 
 #GAMELOOP
@@ -70,9 +72,10 @@ while running:
 
     
     mainClock.tick(60)
+    enemy.move_towards_player(player.pos)
     redrawGameWindow()
     player.update()
-    enemy.move_towards_player(player.pos)
+    
     pygame.display.flip()
         
 
