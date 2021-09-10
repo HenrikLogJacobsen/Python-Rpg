@@ -24,6 +24,8 @@ pygame.display.set_caption("Pukman")
 player = Player(screen_pos)
 
 #enemy = Scellyenny((200,200), 'kuk2.png', 1, 0)
+enemy = Scellyenny((200,200), 'kuk2.png', 1, 2, screen_pos)
+
 
 
 
@@ -34,6 +36,8 @@ test = MapInfo("map1", screen)
 
 def redrawGameWindow():
     screen.fill('white')
+    enemy_pos = enemy.move_towards_player(player.pos)
+    screen.blit(enemy.img, enemy_pos)
     player.draw(screen)
     print(player.pos)
     test.draw(player.pos)

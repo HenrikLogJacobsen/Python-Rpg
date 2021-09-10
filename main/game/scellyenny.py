@@ -1,3 +1,4 @@
+from pygame.sprite import spritecollide
 from entity import Entity
 import pygame
 import math
@@ -5,28 +6,45 @@ from spritesheet import Spritesheet
 from player import Player
 
 
-class Scellyenny(Entity, Player):
-    def __init__(self, start_pos, path, scale, speed):
+class Scellyenny(Entity):
+    def __init__(self, start_pos, path, scale, speed, screen_pos):
         super().__init__(start_pos, path, scale)
         self.speed = speed
-        self.playerpos = Player.pos
-
-
-
-        
-
+        self.start_pos = start_pos
+        self.center = screen_pos
+        self.pos = start_pos
 
     
     def move_towards_player(self, playerpos):
-        dx, dy = self.start_pos[0] - self.playerpos, self.start_pos[1] - self.playerpos
-        
+
+        dx, dy = playerpos[0] + self.center[0], playerpos[1] + self.center[1]
         dist = math.hypot(dx, dy)
-        dx, dy = dx/dist , dy/dist
+        dx, dy = dx / dist, dy / dist  
+        x = self.pos[0]
+        y = self.pos[1]
 
-        self.pos[0] += dx * self.speed
-        self.pos[1] += dy * self.speed
+        x += (dx * self.speed)
+        y += (dy * self.speed)
 
-        print(self.pos)
+        self.pos = [x, y]
+        return self.pos
+              
+    
+
+
+    
+
+
+
+
+
+
+    
+
+
+        
+        
+
 
 
     
