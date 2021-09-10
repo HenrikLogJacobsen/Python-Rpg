@@ -9,7 +9,7 @@ class Scellyenny(Entity, Player):
     def __init__(self, start_pos, path, scale, speed):
         super().__init__(start_pos, path, scale)
         self.speed = speed
-        self.playerpos = Player.pos
+        #self.playerpos = Player.pos
 
 
 
