@@ -22,7 +22,7 @@ class Player():
         self.pos = [center[0] - (self.hitbox[0] / 2), center[1] - (self.hitbox[1] / 2)]
         
         #sprite groups 
-        all_sprites = pygame.sprite.Group()
+        #all_sprites = pygame.sprite.Group()
         #all_sprites.add(self.player_running_anim)
 
     def draw(self, screen):

@@ -4,7 +4,6 @@ import pygame
 class Map:
     def __init__(self, path, positions, screen):
         self.path = path
-        self.path = 'main/game/media' + path
         self.positions = positions
         self.screen = screen
         self.entities = []
