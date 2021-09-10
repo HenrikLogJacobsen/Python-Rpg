@@ -51,5 +51,7 @@ class Player():
         if self.index >= 6:
             self.index = 0
 
+        self.pos = self.pos
+        
         self.action = "idle"
         
