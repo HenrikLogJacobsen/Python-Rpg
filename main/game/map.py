@@ -2,9 +2,9 @@ from entity import Entity
 import pygame 
 
 class Map:
-    def __init__(self, url, positions, screen):
-        self.url = url
-        self.path = 'main/game/media' + url
+    def __init__(self, path, positions, screen):
+        self.path = path
+        self.path = 'main/game/media' + path
         self.positions = positions
         self.screen = screen
         self.entities = []
@@ -12,7 +12,7 @@ class Map:
      
 
         for pos in self.positions:
-            self.entities.append(Entity(pos, self.url, .2))
+            self.entities.append(Entity(pos, self.path, .2))
         
 
    ## def biome(self, playerpos): 
