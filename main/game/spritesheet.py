@@ -11,7 +11,6 @@ class Spritesheet:
         with open(self.meta_data) as f:
             self.data = json.load(f)
         f.close()
-        
 
 
     def get_sprite(self, x, y, w, h):
@@ -25,6 +24,14 @@ class Spritesheet:
         x, y, w, h = sprite['x'], sprite['y'], sprite['w'], sprite['h']
         image = self.get_sprite(x, y, w, h)
         return image
+        
+    
+        
+
+
+
+
+
 
 class MapInfo:
     def __init__(self, path, screen):
