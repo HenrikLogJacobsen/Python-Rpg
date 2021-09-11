@@ -29,7 +29,9 @@ class Scellyenny(Entity):
 class Enemy():
     def __init__(self, img, pos) -> None:
         pass
-        
+    
+    def draw(self):
+        pass
     
 
 

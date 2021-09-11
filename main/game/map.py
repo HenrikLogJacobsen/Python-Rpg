@@ -27,3 +27,5 @@ class Map:
     def draw(self, playerpos):
         for e in self.entities:
             self.screen.blit(e[0],[e[1][0] + playerpos[0], e[1][1] + playerpos[1]])
+        for e in self.enemies:
+            e.draw()
