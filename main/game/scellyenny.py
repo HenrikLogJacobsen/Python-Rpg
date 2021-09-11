@@ -13,16 +13,15 @@ class Scellyenny(Entity):
         self.pos = start_pos
 
     
-    def move_towards_player(self, playerpos):
+    def move_towards_player(self, step_count):
 
-        dx, dy = playerpos[0] - self.center[0], playerpos[1] - self.center[1]
-        dist = math.hypot(dx, dy)
-        dx, dy = dx / dist, dy / dist  
-        x = self.pos[0]
-        y = self.pos[1]
+        x, y = self.start_pos
 
-        x += (dx * self.speed)
-        y += (dy * self.speed)
+        y += step_count[1]
+        y += step_count[0]
+        x += step_count[2]
+        x += step_count[3]
+
 
         self.pos = [x, y]
         return self.pos
