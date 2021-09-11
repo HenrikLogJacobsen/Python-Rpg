@@ -1,7 +1,16 @@
 {
     "terrain": {
         "tree": {
-            "path": "tree.jpg",
+            "path": "tree.png",
+            "scale": 0.2,
+            "entities": [
+                [100, 100],
+                [-100, -100],
+                [200, -50]
+            ]
+        },  
+        "rock": {
+            "path": "rock.png",
             "scale": 0.2,
             "entities": [
                 [100, 100],
@@ -13,9 +22,11 @@
     "enemy": {
         "skeleton": {
             "path": "kuk2.png",
-            "scale": 1,
+            "scale": 2,
             "entities": [
-                [200, 300]
+                [0,0],
+                [1000, 1000],
+                [-100, 100]
             ]
         }
     }
