@@ -31,9 +31,6 @@ def redrawGameWindow():
     player.draw(screen)
     map1.draw(player.pos)
 
-
-
-
 #GAMELOOP
 while running:
     for event in pygame.event.get():
