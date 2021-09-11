@@ -2,8 +2,6 @@ from pygame.sprite import spritecollide
 from entity import Entity
 import pygame
 import math
-from spritesheet import Spritesheet
-from player import Player
 
 
 class Scellyenny(Entity):
@@ -28,7 +26,11 @@ class Scellyenny(Entity):
 
         self.pos = [x, y]
         return self.pos
-              
+        
+class Enemy():
+    def __init__(self, img, pos) -> None:
+        pass
+        
     
 
 

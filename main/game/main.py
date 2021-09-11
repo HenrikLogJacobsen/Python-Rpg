@@ -3,7 +3,7 @@ from player import Player
 import math
 from ingameGui import text_box
 from scellyenny import Scellyenny
-from spritesheet import MapInfo
+from map import Map
 
 # Class? + update monitor on resize
 monitor = width, height = 720, 480
@@ -22,7 +22,7 @@ player = Player(screen_pos)
 
 enemy = Scellyenny((200,200), 'kuk2.png', 1, 2, screen_pos)
 
-map1 = MapInfo("map1", screen)
+map1 = Map("map1", screen)
 
 def redrawGameWindow():
     screen.fill('white')
