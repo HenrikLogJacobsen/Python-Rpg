@@ -22,12 +22,7 @@ player = Player(screen_pos)
 step_count = [0, 0, 0, 0]
 enemy = Scellyenny((200,200), 'kuk2.png', 1, 2, screen_pos)
 
-<<<<<<< HEAD
 map1 = Map("map1", screen)
-=======
-
-map1 = MapInfo("map1", screen)
->>>>>>> 8993a8ecb56edac2218c7c4dd11c2e5a6fb38169
 
 def redrawGameWindow():
     screen.fill('white')
