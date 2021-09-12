@@ -26,7 +26,7 @@ map1 = Map("map1", screen)
 
 def redrawGameWindow():
     screen.fill('white')
-    enemy_pos = enemy.move_towards_player(step_count)
+    enemy_pos = enemy.move_towards_player(step_count, player.pos)
     screen.blit(enemy.img, enemy_pos)
     player.draw(screen)
     map1.draw(player.pos)

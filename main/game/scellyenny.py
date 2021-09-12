@@ -13,26 +13,21 @@ class Scellyenny(Entity):
         self.pos = start_pos
 
     
-    def move_towards_player(self, step_count):
-
+    def move_towards_player(self, step_count, playerpos):
+        self.playerpos = playerpos
         x, y = self.start_pos
-
-        y += step_count[1]
-        y += step_count[0]
-        x += step_count[2]
-        x += step_count[3]
+        self.pos = [x, y]   
+        self.pos = ([self.pos[1] + playerpos[0], self.pos[1] + playerpos[1]])
 
 
-        self.pos = [x, y]
         return self.pos
         
 class Enemy():
     def __init__(self, img, pos) -> None:
         pass
+        
     
-    def draw(self):
-        pass
-    
+## legg til en move method som oppdaterer posisjonen til enemy 
 
 
     
