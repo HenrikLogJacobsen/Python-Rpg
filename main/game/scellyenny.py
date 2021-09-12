@@ -1,7 +1,5 @@
-from pygame.sprite import spritecollide
 from entity import Entity
-import pygame
-import math
+
 
 
 class Scellyenny(Entity):

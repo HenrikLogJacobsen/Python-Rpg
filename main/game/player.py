@@ -3,7 +3,7 @@ from spritesheet import Spritesheet
 import math
 
 class Player():
-    def __init__(self, center):
+    def __init__(self, monitor):
 
         self.action = "idle"
         self.index = 0
@@ -16,10 +16,10 @@ class Player():
 
         self.char_anim_sprite = Spritesheet('main/game/media/char_anim.png')
 
-        self.rect = self.char_anim_sprite.parse_sprite("adventurer-idle-2-00.png").get_rect()
-        self.hitbox = (self.rect[2], self.rect[3])
-        self.start_pos = [center[0] - (self.hitbox[0] / 2), center[1] - (self.hitbox[1] / 2)]
-        self.pos = [center[0] - (self.hitbox[0] / 2), center[1] - (self.hitbox[1] / 2)]
+        rect = self.char_anim_sprite.parse_sprite("adventurer-idle-2-00.png").get_rect()
+        self.rect = rect[2], rect[3]
+        self.draw_pos = [monitor[0] / 2 - (self.rect[0] / 2), monitor[1] / 2 - (self.rect[1] / 2)]
+        self.pos = [monitor[0] / 2 - (self.rect[0] / 2), monitor[1] / 2 - (self.rect[1] / 2)]
         
         #sprite groups 
         #all_sprites = pygame.sprite.Group()
@@ -28,19 +28,19 @@ class Player():
     def draw(self, screen):
         
         if self.action == "left":
-            screen.blit(pygame.transform.flip(self.player_running_anim[math.floor(self.index)], True, False),(self.start_pos))
+            screen.blit(pygame.transform.flip(self.player_running_anim[math.floor(self.index)], True, False),(self.draw_pos))
 
         if self.action == "right":
-            screen.blit(self.player_running_anim[math.floor(self.index)],(self.start_pos))
+            screen.blit(self.player_running_anim[math.floor(self.index)],(self.draw_pos))
         
         if self.action == "idle": 
-            screen.blit(self.player_idle[math.floor(self.index)],(self.start_pos))
+            screen.blit(self.player_idle[math.floor(self.index)],(self.draw_pos))
 
         if self.action == "attacking": 
             if self.LEFT == True:
-                screen.blit(pygame.transform.flip(self.player_attack[math.floor(self.index)], True, False), (self.start_pos))
+                screen.blit(pygame.transform.flip(self.player_attack[math.floor(self.index)], True, False), (self.draw_pos))
             else:
-                screen.blit(self.player_attack[math.floor(self.index)], self.start_pos)
+                screen.blit(self.player_attack[math.floor(self.index)], self.draw_pos)
 
     def update(self):
         if self.action == "left" or self.action == "right":
@@ -54,4 +54,17 @@ class Player():
         self.pos = self.pos
         
         self.action = "idle"
-        
+
+    def is_touching(self, entities):
+        #self.pos self.rect, entity.pos entity.rect
+        for e in entities:
+            if (
+                self.pos[0] + self.rect[0] >= e.pos[0] and
+                e.pos[0] + e.rect[0] >= self.pos[0] and
+                self.pos[1] + self.rect[1] >= e.pos[1] and
+                e.pos[1] + e.rect[1] >= self.pos[1]
+                ):
+                return True
+
+        return False
+
