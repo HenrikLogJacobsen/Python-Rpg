@@ -6,6 +6,9 @@ from ingameGui import text_box
 from map import Map
 from entity import HealthBar
 
+#dette e den siste versjonen min 
+
+
 # ___________INIT___________
 
 # Class? + update monitor on resize
@@ -31,15 +34,6 @@ player = Player(monitor)
 #player_health = HealthBar("main/game/media/kuk2.png", [0,0], screen)
 map1 = Map("map1", screen)
 
-def redrawGameWindow():
-    screen.fill('white')
-    enemy_pos = enemy.move_towards_player(step_count, player.pos)
-    screen.blit(enemy.img, enemy_pos)
-    player.draw(screen)
-
-    map1.draw(player.pos)
-
-
 
 # _________FUNCTIONS____________
 
@@ -52,7 +46,7 @@ def redrawGameWindow():
     map1.draw(camera)
     screen.blit(hpBox[0], hpBox[1])
     
-    
+# player.pos = 
 
 def keyhandle():
     if keys[pygame.K_LEFT]:
