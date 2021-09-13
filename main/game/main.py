@@ -98,6 +98,12 @@ while running:
 
     if player.is_touching(map1.enemies): 
         paused = True
+
+
+
+
+
+        
         alertText = "Å nei du ble truffet av en ginger"
         alert = text_box(alertText, 350, 200, 40)
         screen.blit(alert[0], alert[1])
