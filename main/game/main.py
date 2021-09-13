@@ -4,7 +4,6 @@ import math
 from ingameGui import text_box
 #from scellyenny import Scellyenny
 from map import Map
-from entity import HealthBar
 
 # ___________INIT___________
 
@@ -28,17 +27,10 @@ hpBox = text_box("map1", 30, 15, 20)
 player = Player(monitor)
 #step_count = [0, 0, 0, 0]
 #enemy = Scellyenny((200,200), 'kuk2.png', 1, 2, player.pos)
-#player_health = HealthBar("main/game/media/kuk2.png", [0,0], screen)
+
 map1 = Map("map1", screen)
-
-def redrawGameWindow():
-    screen.fill('white')
-    enemy_pos = enemy.move_towards_player(step_count, player.pos)
-    screen.blit(enemy.img, enemy_pos)
-    player.draw(screen)
-
-    map1.draw(player.pos)
-
+map1.forest(-500, -500, 50, map1.imgs[1]) # LAG OVERSIKT OVER HVILKET BILDE SOM ER HVILKET
+map1.forest(-1000, -1000, 200, map1.imgs[0])
 
 
 # _________FUNCTIONS____________
@@ -52,10 +44,10 @@ def redrawGameWindow():
     map1.draw(camera)
     screen.blit(hpBox[0], hpBox[1])
     
-    
 
 def keyhandle():
     if keys[pygame.K_LEFT]:
+        print(player.pos, camera)
         player.pos[0] -= vel
         camera[0] -= vel
         player.action = "left"
@@ -75,11 +67,10 @@ def keyhandle():
         camera[1] += vel
         player.action = "idle"
     
-
-
     # ----- Må oppdateres -----
     #if keys[pygame.K_SPACE]:
     #    player.action = "attacking"
+
 
 # ___________GAMELOOP_____________
 while running:
@@ -99,11 +90,6 @@ while running:
     if player.is_touching(map1.enemies): 
         paused = True
 
-
-
-
-
-        
         alertText = "Å nei du ble truffet av en ginger"
         alert = text_box(alertText, 350, 200, 40)
         screen.blit(alert[0], alert[1])
