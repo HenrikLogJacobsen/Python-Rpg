@@ -4,7 +4,6 @@ import math
 from ingameGui import text_box
 #from scellyenny import Scellyenny
 from map import Map
-from entity import HealthBar
 
 #dette e den siste versjonen min 
 
@@ -50,6 +49,7 @@ def redrawGameWindow():
 
 def keyhandle():
     if keys[pygame.K_LEFT]:
+        print(player.pos, camera)
         player.pos[0] -= vel
         camera[0] -= vel
         player.action = "left"
@@ -69,11 +69,10 @@ def keyhandle():
         camera[1] += vel
         player.action = "idle"
     
-
-
     # ----- Må oppdateres -----
     #if keys[pygame.K_SPACE]:
     #    player.action = "attacking"
+
 
 # ___________GAMELOOP_____________
 while running:
@@ -93,11 +92,6 @@ while running:
     if player.is_touching(map1.enemies): 
         paused = True
 
-
-
-
-
-        
         alertText = "Å nei du ble truffet av en ginger"
         alert = text_box(alertText, 350, 200, 40)
         screen.blit(alert[0], alert[1])
