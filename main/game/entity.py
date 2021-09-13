@@ -29,9 +29,7 @@ class HealthBar(Entity):
         super().__init__(img, pos, screen)
         self.img = pygame.load.image(img)
 
-    def draw(self, camera):
-        self.screen.blit(self.img, [self.pos[0] - camera[0], self.pos[1] - camera[1]])
-
+    
 
 
         
