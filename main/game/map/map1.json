@@ -20,9 +20,8 @@
         },
         "grass_tile": {
             "path": "grass.png",
-            "scale": 0.2
-            
-
+            "scale": 0.2,
+            "entities": []
         }  
     },
     "enemy": {
