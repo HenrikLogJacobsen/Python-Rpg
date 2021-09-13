@@ -29,14 +29,8 @@ player = Player(monitor)
 #enemy = Scellyenny((200,200), 'kuk2.png', 1, 2, player.pos)
 
 map1 = Map("map1", screen)
-
-def redrawGameWindow():
-    screen.fill('white')
-    enemy_pos = enemy.move_towards_player(step_count, player.pos)
-    screen.blit(enemy.img, enemy_pos)
-    player.draw(screen)
-    map1.draw(player.pos)
-
+map1.forest(-500, -500, 50, map1.imgs[1]) # LAG OVERSIKT OVER HVILKET BILDE SOM ER HVILKET
+map1.forest(-1000, -1000, 200, map1.imgs[0])
 
 
 # _________FUNCTIONS____________
@@ -95,6 +89,12 @@ while running:
 
     if player.is_touching(map1.enemies): 
         paused = True
+
+
+
+
+
+        
         alertText = "Å nei du ble truffet av en ginger"
         alert = text_box(alertText, 350, 200, 40)
         screen.blit(alert[0], alert[1])
