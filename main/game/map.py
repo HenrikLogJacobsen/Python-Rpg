@@ -16,6 +16,7 @@ class Map:
         for type in self.info:
             for entity in self.info[type]:
                 entity = self.info[type][entity]
+                print("main/game/media/" + entity["path"])
                 img = pygame.image.load("main/game/media/" + entity["path"])
                 scale = entity["scale"]
                 img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
