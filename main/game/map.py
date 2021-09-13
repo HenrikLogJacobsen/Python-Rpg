@@ -2,6 +2,7 @@ from entity import Enemy
 import pygame 
 import json
 from random import randint
+from entity import Entity
 
 class Map:
     def __init__(self, path, screen):
@@ -16,13 +17,13 @@ class Map:
         for type in self.info:
             for entity in self.info[type]:
                 entity = self.info[type][entity]
-                print("main/game/media/" + entity["path"])
-                img = pygame.image.load("main/game/media/" + entity["path"])
+                img = pygame.image.load("main/game/media/terrain/" + entity["path"])
                 scale = entity["scale"]
                 img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
                 self.imgs.append(img)
                 if type == "terrain":
                     for e in entity["entities"]:
+                        #DEFINER ENTITY OBJEKTER
                         self.entities.append([img, e])
                 elif type == "enemy":
                     # Lagre annen info her (hp, dmg, movement type) og pass inn i enemy objekt

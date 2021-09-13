@@ -47,9 +47,9 @@ def redrawGameWindow():
     
 # player.pos = 
 
+# ENDRE PLAYERACTION TIL BOOL ARRAY
 def keyhandle():
     if keys[pygame.K_LEFT]:
-        print(player.pos, camera)
         player.pos[0] -= vel
         camera[0] -= vel
         player.action = "left"
@@ -69,6 +69,7 @@ def keyhandle():
         camera[1] += vel
         player.action = "idle"
     
+
     # ----- Må oppdateres -----
     #if keys[pygame.K_SPACE]:
     #    player.action = "attacking"
@@ -80,7 +81,6 @@ while running:
         if event.type == pygame.QUIT: sys.exit()
 
     keys = pygame.key.get_pressed()
-
     if not paused:
         keyhandle()
         redrawGameWindow()
@@ -89,9 +89,9 @@ while running:
         
     if keys[pygame.K_ESCAPE]: paused = not paused
 
+    print(keys[pygame.K_ESCAPE])
     if player.is_touching(map1.enemies): 
         paused = True
-
         alertText = "Å nei du ble truffet av en ginger"
         alert = text_box(alertText, 350, 200, 40)
         screen.blit(alert[0], alert[1])
