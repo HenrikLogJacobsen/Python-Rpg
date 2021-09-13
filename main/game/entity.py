@@ -1,4 +1,5 @@
 from math import sqrt      
+import pygame
 
 class Entity():
     def __init__(self, img, pos, screen):
@@ -23,6 +24,13 @@ class Enemy(Entity):
         vx, vy = self.speed * dx / d, self.speed * dy / d
         self.pos = [self.pos[0] + vx, self.pos[1] + vy]
 
+class HealthBar(Entity):
+    def __init__(self, img, pos, screen):
+        super().__init__(img, pos, screen)
+        self.img = pygame.load.image(img)
+
+    def draw(self, camera):
+        self.screen.blit(self.img, [self.pos[0] - camera[0], self.pos[1] - camera[1]])
 
 
 

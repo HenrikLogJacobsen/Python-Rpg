@@ -4,6 +4,7 @@ import math
 from ingameGui import text_box
 #from scellyenny import Scellyenny
 from map import Map
+from entity import HealthBar
 
 # ___________INIT___________
 
@@ -27,7 +28,7 @@ hpBox = text_box("map1", 30, 15, 20)
 player = Player(monitor)
 #step_count = [0, 0, 0, 0]
 #enemy = Scellyenny((200,200), 'kuk2.png', 1, 2, player.pos)
-
+#player_health = HealthBar("main/game/media/kuk2.png", [0,0], screen)
 map1 = Map("map1", screen)
 
 def redrawGameWindow():
@@ -35,6 +36,7 @@ def redrawGameWindow():
     enemy_pos = enemy.move_towards_player(step_count, player.pos)
     screen.blit(enemy.img, enemy_pos)
     player.draw(screen)
+
     map1.draw(player.pos)
 
 
@@ -49,6 +51,7 @@ def redrawGameWindow():
     player.draw(screen)
     map1.draw(camera)
     screen.blit(hpBox[0], hpBox[1])
+    
     
 
 def keyhandle():
