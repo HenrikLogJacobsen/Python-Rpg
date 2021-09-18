@@ -2,12 +2,13 @@ from math import sqrt
 import pygame
 
 class Entity():
-    def __init__(self, img, pos, screen):
+    def __init__(self, img, pos, screen, dtop):
         self.screen = screen
         self.img = img
         self.pos = pos
         rect = self.img.get_rect()
         self.rect = rect[2], rect[3]
+        self.dtop = dtop
 
     def draw(self, camera):
         self.screen.blit(self.img, [self.pos[0] - camera[0], self.pos[1] - camera[1]])

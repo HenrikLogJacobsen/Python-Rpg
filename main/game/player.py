@@ -56,14 +56,15 @@ class Player():
         
         self.action = "idle"
 
-    def is_touching(self, entities):
+    def is_touching(self, vel, entities):
         #self.pos self.rect, entity.pos entity.rect
+        d = 9
         for e in entities:
             if (
-                self.pos[0] + self.rect[0] >= e.pos[0] and
-                e.pos[0] + e.rect[0] >= self.pos[0] and
-                self.pos[1] + self.rect[1] >= e.pos[1] and
-                e.pos[1] + e.rect[1] >= self.pos[1]
+                self.pos[0] + vel[0] + self.rect[0] - d >= e.pos[0] and
+                e.pos[0] + e.rect[0] >= self.pos[0] + vel[0] + d and
+                self.pos[1] + vel[1] + self.rect[1] - d >= e.pos[1] + e.dtop and
+                e.pos[1] + e.rect[1] >= self.pos[1] + vel[1] + d
                 ):
                 return True
 

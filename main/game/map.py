@@ -24,15 +24,15 @@ class Map:
                 if type == "terrain":
                     for e in entity["entities"]:
                         #DEFINER ENTITY OBJEKTER
-                        self.entities.append([img, e])
+                        self.entities.append(Entity(img, e, self.screen, entity["dtop"]))
                 elif type == "enemy":
                     # Lagre annen info her (hp, dmg, movement type) og pass inn i enemy objekt
                     for e in entity["entities"]:
-                        self.enemies.append(Enemy(img,e, screen))
-
+                        self.enemies.append(Enemy(img, e, self.screen))
     def draw(self, camera):
         for e in self.entities:
-            self.screen.blit(e[0],[e[1][0] - camera[0], e[1][1] - camera[1]])
+            #self.screen.blit(e[0],[e[1][0] - camera[0], e[1][1] - camera[1]])
+            e.draw(camera)
         for e in self.enemies:
             e.draw(camera)
 
@@ -45,5 +45,5 @@ class Map:
         for _ in range(amount):
             x = randint(cornerX, cornerX+size)
             y = randint(cornerY, cornerY+size)
-            self.entities.append([img, [x, y]])
+            self.entities.append(Entity(img, [x, y], self.screen))
 

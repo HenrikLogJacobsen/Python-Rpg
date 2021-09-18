@@ -32,7 +32,7 @@ player = Player(monitor)
 #enemy = Scellyenny((200,200), 'kuk2.png', 1, 2, player.pos)
 #player_health = HealthBar("main/game/media/kuk2.png", [0,0], screen)
 map1 = Map("map1", screen)
-
+#map1.forest(-1000, -1000, 100, map1.imgs[0])
 
 # _________FUNCTIONS____________
 
@@ -49,24 +49,28 @@ def redrawGameWindow():
 
 # ENDRE PLAYERACTION TIL BOOL ARRAY
 def keyhandle():
-    if keys[pygame.K_LEFT]:
-        player.pos[0] -= vel
-        camera[0] -= vel
+    if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+        if not player.is_touching([-vel, 0], map1.entities):
+            player.pos[0] -= vel
+            camera[0] -= vel
         player.action = "left"
         
-    if keys[pygame.K_RIGHT]:
-        player.pos[0] += vel
-        camera[0] += vel
+    if keys[pygame.K_RIGHT] or keys[pygame.K_d]: 
+        if not player.is_touching([vel, 0], map1.entities):
+            player.pos[0] += vel
+            camera[0] += vel
         player.action = "right"
 
-    if keys[pygame.K_UP]:
-        player.pos[1] -= vel
-        camera[1] -= vel
+    if keys[pygame.K_UP] or keys[pygame.K_w]: 
+        if not player.is_touching([0, -vel], map1.entities):
+            player.pos[1] -= vel
+            camera[1] -= vel
         player.action = "idle"
 
-    if keys[pygame.K_DOWN]:
-        player.pos[1] += vel
-        camera[1] += vel
+    if keys[pygame.K_DOWN] or keys[pygame.K_s]: 
+        if not player.is_touching([0, vel], map1.entities):
+            player.pos[1] += vel
+            camera[1] += vel
         player.action = "idle"
     
 
@@ -89,13 +93,14 @@ while running:
         
     if keys[pygame.K_ESCAPE]: paused = not paused
 
-    print(keys[pygame.K_ESCAPE])
-    if player.is_touching(map1.enemies): 
-        paused = True
-        alertText = "Å nei du ble truffet av en ginger"
-        alert = text_box(alertText, 350, 200, 40)
-        screen.blit(alert[0], alert[1])
+    #if player.is_touching(map1.enemies): 
+    #    paused = True
+    #    alertText = "Å nei du ble truffet av en ginger"
+    #    alert = text_box(alertText, 350, 200, 40)
+    #    screen.blit(alert[0], alert[1])
 
+    time = round(pygame.time.get_ticks() / 1000, 2)
+    print(time)
     
     mainClock.tick(60)
     pygame.display.flip()
