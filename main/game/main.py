@@ -1,7 +1,7 @@
 import sys, pygame
 from player import Player
 import math
-from ingameGui import text_box
+from ingameGui import GameGui
 #from scellyenny import Scellyenny
 from map import Map
 
@@ -17,14 +17,13 @@ ground = 8, 138, 10
 vel = 2
 running = True
 paused = False
-
+time = 0
 mainClock = pygame.time.Clock()
 pygame.init()
 screen = pygame.display.set_mode(monitor, pygame.RESIZABLE)
 pygame.display.set_caption("Pukman")
 
 #Flytt disse
-hpBox = text_box("map1", 30, 15, 20)
 
 #Entities (trenger lettere måte for når vi får mange)
 player = Player(monitor)
@@ -33,6 +32,7 @@ player = Player(monitor)
 #player_health = HealthBar("main/game/media/kuk2.png", [0,0], screen)
 map1 = Map("map1", screen)
 #map1.forest(-1000, -1000, 100, map1.imgs[0])
+gui = GameGui(screen)
 
 # _________FUNCTIONS____________
 
@@ -43,7 +43,8 @@ def redrawGameWindow():
     #screen.blit(enemy.img, enemy_pos)
     player.draw(screen)
     map1.draw(camera)
-    screen.blit(hpBox[0], hpBox[1])
+    gui.draw()
+
     
 # player.pos = 
 
@@ -90,6 +91,7 @@ while running:
         redrawGameWindow()
         map1.update(player.pos)
         player.update()
+        gui.update(int(time))
         
     if keys[pygame.K_ESCAPE]: paused = not paused
 
@@ -100,8 +102,6 @@ while running:
     #    screen.blit(alert[0], alert[1])
 
     time = round(pygame.time.get_ticks() / 1000, 2)
-    print(time)
-    
     mainClock.tick(60)
     pygame.display.flip()
 

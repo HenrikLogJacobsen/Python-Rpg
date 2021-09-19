@@ -3,7 +3,7 @@
         "tree": {
             "path": "tree.png",
             "scale": 0.2,
-            "dtop": 40,
+            "dtop": 50,
             "entities": [
                 [100, -100],
                 [-100, 100],
@@ -13,7 +13,7 @@
         "rock": {
             "path": "rock.png",
             "scale": 0.2,
-            "dtop": 5,
+            "dtop": 15,
             "entities": [
                 [100, 100],
                 [-100, -100],

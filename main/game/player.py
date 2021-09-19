@@ -17,9 +17,9 @@ class Player():
         self.char_anim_sprite = Spritesheet('main/game/media/sprites/char_anim.png')
 
         rect = self.char_anim_sprite.parse_sprite("adventurer-idle-2-00.png").get_rect()
-        self.rect = rect[2], rect[3]
-        self.draw_pos = [monitor[0] / 2 - (self.rect[0] / 2), monitor[1] / 2 - (self.rect[1] / 2)]
-        self.pos = [monitor[0] / 2 - (self.rect[0] / 2), monitor[1] / 2 - (self.rect[1] / 2)]
+        self.rect = rect[2] - 25, rect[3] - 10
+        self.draw_pos = [monitor[0] / 2 - (self.rect[0] / 2), monitor[1] / 2 - (self.rect[1] / 2) - 8]
+        self.pos = [monitor[0] / 2 - (self.rect[0] / 2) + 10, monitor[1] / 2 - (self.rect[1] / 2)]
         
         #sprite groups 
         #all_sprites = pygame.sprite.Group()
@@ -58,7 +58,7 @@ class Player():
 
     def is_touching(self, vel, entities):
         #self.pos self.rect, entity.pos entity.rect
-        d = 9
+        d = 0
         for e in entities:
             if (
                 self.pos[0] + vel[0] + self.rect[0] - d >= e.pos[0] and
