@@ -8,6 +8,7 @@ class Map:
     def __init__(self, path, screen):
         self.screen = screen
         self.entities = []
+        self.test_rects = []
         self.enemies = []
         self.path = "main/game/map/" + path + ".json"
         self.imgs = []

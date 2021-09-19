@@ -6,7 +6,9 @@ import json
 class Spritesheet:
     def __init__(self, path):
         self.path = path
-        self.sprite_sheet = pygame.image.load(path).convert()
+        for s in self.path:
+            self.sprite_sheet = pygame.image.load(path).convert()
+        
         self.meta_data = self.path.replace('png', 'json')
         with open(self.meta_data) as f:
             self.data = json.load(f)
