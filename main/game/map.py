@@ -2,6 +2,7 @@ from entity import Enemy
 import pygame 
 import json
 from random import randint
+from entity import Entity
 
 class Map:
     def __init__(self, path, screen):
@@ -17,24 +18,22 @@ class Map:
         for type in self.info:
             for entity in self.info[type]:
                 entity = self.info[type][entity]
-                print("main/game/media/" + entity["path"])
-                img = pygame.image.load("main/game/media/" + entity["path"])
+                img = pygame.image.load("main/game/media/terrain/" + entity["path"])
                 scale = entity["scale"]
                 img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
                 self.imgs.append(img)
                 if type == "terrain":
                     for e in entity["entities"]:
-                        self.entities.append([img, e])
-                        self.test_rects.append(img.get_rect())
+                        #DEFINER ENTITY OBJEKTER
+                        self.entities.append(Entity(img, e, self.screen, entity["dtop"]))
                 elif type == "enemy":
                     # Lagre annen info her (hp, dmg, movement type) og pass inn i enemy objekt
                     for e in entity["entities"]:
-                        self.enemies.append(Enemy(img,e, screen))
-                
-
+                        self.enemies.append(Enemy(img, e, self.screen))
     def draw(self, camera):
         for e in self.entities:
-            self.screen.blit(e[0],[e[1][0] - camera[0], e[1][1] - camera[1]])
+            #self.screen.blit(e[0],[e[1][0] - camera[0], e[1][1] - camera[1]])
+            e.draw(camera)
         for e in self.enemies:
             e.draw(camera)
 
@@ -47,5 +46,5 @@ class Map:
         for _ in range(amount):
             x = randint(cornerX, cornerX+size)
             y = randint(cornerY, cornerY+size)
-            self.entities.append([img, [x, y]])
+            self.entities.append(Entity(img, [x, y], self.screen))
 

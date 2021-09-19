@@ -36,6 +36,7 @@ player = Player(monitor)
 #enemy = Scellyenny((200,200), 'kuk2.png', 1, 2, player.pos)
 #player_health = HealthBar("main/game/media/kuk2.png", [0,0], screen)
 map1 = Map("map1", screen)
+#map1.forest(-1000, -1000, 100, map1.imgs[0])
 
 # _________FUNCTIONS____________
 def raycasting(playerpos, entities):
@@ -166,7 +167,6 @@ while running:
         if event.type == pygame.QUIT: sys.exit()
 
     keys = pygame.key.get_pressed()
-
     if not paused:
         ATTACK = False
         LEFT = False
@@ -188,7 +188,14 @@ while running:
         alertText = "Å nei du ble truffet!"
         alert = text_box(alertText, 350, 200, 40)
         screen.blit(alert[0], alert[1])
+    #if player.is_touching(map1.enemies): 
+    #    paused = True
+    #    alertText = "Å nei du ble truffet av en ginger"
+    #    alert = text_box(alertText, 350, 200, 40)
+    #    screen.blit(alert[0], alert[1])
 
+    time = round(pygame.time.get_ticks() / 1000, 2)
+    print(time)
     
     mainClock.tick(60)
     pygame.display.flip()
