@@ -26,24 +26,29 @@ class Player():
         #all_sprites.add(self.player_running_anim)
 
     def draw(self, screen):
-        
-        if self.action == "left":
+        if self.action == "attacking": 
+            screen.blit(pygame.transform.flip(self.player_attack[math.floor(self.index)], True, False),(self.draw_pos))            #if self.actions == 'attacking':
+
+        elif self.action == "left":
             screen.blit(pygame.transform.flip(self.player_running_anim[math.floor(self.index)], True, False),(self.draw_pos))
 
-        if self.action == "right":
+        elif self.action == "right":
             screen.blit(self.player_running_anim[math.floor(self.index)],(self.draw_pos))
         
-        if self.action == "idle": 
+        elif self.action == "down": 
             screen.blit(self.player_idle[math.floor(self.index)],(self.draw_pos))
 
-        if self.action == "attacking": 
-            if self.LEFT == True:
-                screen.blit(pygame.transform.flip(self.player_attack[math.floor(self.index)], True, False), (self.draw_pos))
-            else:
-                screen.blit(self.player_attack[math.floor(self.index)], self.draw_pos)
+        elif self.action == "left-up" or self.action == "left-down":
+            screen.blit(pygame.transform.flip(self.player_running_anim[math.floor(self.index)], True, False),(self.draw_pos))
 
+        elif self.action == "right-up" or self.action == "right-down":
+            screen.blit(self.player_running_anim[math.floor(self.index)],(self.draw_pos))
+       
+        else: 
+            screen.blit(self.player_idle[math.floor(self.index)],(self.draw_pos))
+            
     def update(self):
-        if self.action == "left" or self.action == "right":
+        if self.action == "left" or self.action == "right" or self.action == 'attack':
             self.index = (self.index + 0.1) % len(self.player_running_anim)
 
         # DRAW

@@ -16,20 +16,15 @@ class Entity():
 class Enemy(Entity):
     def __init__(self, img, pos, screen):
         super().__init__(img, pos, screen)
-        self.speed = .5
+        self.speed = 1.5
+
+        
 
     def update(self, playerpos):
         dx, dy = playerpos[0] - self.pos[0], playerpos[1] - self.pos[1]
         d = sqrt(dx**2 + dy**2)
         vx, vy = self.speed * dx / d, self.speed * dy / d
         self.pos = [self.pos[0] + vx, self.pos[1] + vy]
-
-class HealthBar(Entity):
-    def __init__(self, img, pos, screen):
-        super().__init__(img, pos, screen)
-        self.img = pygame.load.image(img)
-
-    
 
 
         

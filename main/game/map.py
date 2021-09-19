@@ -7,6 +7,7 @@ class Map:
     def __init__(self, path, screen):
         self.screen = screen
         self.entities = []
+        self.test_rects = []
         self.enemies = []
         self.path = "main/game/map/" + path + ".json"
         self.imgs = []
@@ -24,10 +25,12 @@ class Map:
                 if type == "terrain":
                     for e in entity["entities"]:
                         self.entities.append([img, e])
+                        self.test_rects.append(img.get_rect())
                 elif type == "enemy":
                     # Lagre annen info her (hp, dmg, movement type) og pass inn i enemy objekt
                     for e in entity["entities"]:
                         self.enemies.append(Enemy(img,e, screen))
+                
 
     def draw(self, camera):
         for e in self.entities:
