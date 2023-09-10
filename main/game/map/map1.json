@@ -28,7 +28,7 @@
     },
     "enemy": {
         "skeleton": {
-            "path": "kuk2.png",
+            "path": "junas.png",
             "scale": 2,
             "entities": [
             ]

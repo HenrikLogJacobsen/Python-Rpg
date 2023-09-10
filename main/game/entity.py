@@ -2,7 +2,7 @@ from math import sqrt
 import pygame
 
 class Entity():
-    def __init__(self, img, pos, screen, dtop):
+    def __init__(self, img, pos, screen, dtop = 0):
         self.screen = screen
         self.img = img
         self.pos = pos

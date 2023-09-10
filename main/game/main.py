@@ -4,7 +4,7 @@ from pygame.math import Vector2
 from player import Player
 import math
 from ingameGui import GameGui
-#from scellyenny import Scellyenny
+from scellyenny import Scellyenny
 from map import Map
 import time
 import numpy as np
@@ -30,10 +30,10 @@ pygame.display.set_caption("Pukman")
 
 player = Player(monitor)
 #step_count = [0, 0, 0, 0]
-#enemy = Scellyenny((200,200), 'kuk2.png', 1, 2, player.pos)
-#player_health = HealthBar("main/game/media/kuk2.png", [0,0], screen)
+#enemy = Scellyenny((200,200), 'junas.png', 1, 2, player.pos)
+#player_health = HealthBar("main/game/media/junas.png", [0,0], screen)
 map1 = Map("map1", screen)
-#map1.forest(-1000, -1000, 100, map1.imgs[0])
+map1.forest(-1000, -1000, 100, map1.imgs[0])
 gui = GameGui(screen)
 
 # _________FUNCTIONS____________
@@ -181,12 +181,13 @@ while running:
         
     if keys[pygame.K_ESCAPE]: paused = not paused
 
+    '''
     if player.is_touching(map1.enemies): 
         paused = True
 
         alertText = "Å nei du ble truffet!"
         alert = text_box(alertText, 350, 200, 40)
-        screen.blit(alert[0], alert[1])
+        screen.blit(alert[0], alert[1])'''
     #if player.is_touching(map1.enemies): 
     #    paused = True
     #    alertText = "Å nei du ble truffet av en ginger"
